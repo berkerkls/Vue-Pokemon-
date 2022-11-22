@@ -14,7 +14,10 @@
                   v-for="(item, index) in pokemons"
                   :key="index"
                 >
-                  <v-img src="" height="200px"></v-img>
+                  <v-img
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png"
+                    height="200px"
+                  ></v-img>
 
                   <v-card-title
                     >{{
@@ -25,13 +28,19 @@
                   <v-card-subtitle> Pokemons </v-card-subtitle>
 
                   <v-card-actions>
-                    <v-btn
-                      color="orange lighten-2"
-                      text
-                      @click="singleItem(item.name)"
+                    <RouterLink
+                      :to="{
+                        name: 'DetailsPage',
+                        params: { pokename: item.name },
+                      }"
                     >
-                      See in Details
-                    </v-btn>
+                      <v-btn
+                        color="orange lighten-2"
+                        text
+                        @click="singleItemPush(item.name)"
+                        >See in Details
+                      </v-btn>
+                    </RouterLink>
                   </v-card-actions>
                 </v-card>
               </v-row>
@@ -59,13 +68,16 @@ export default defineComponent({
   data: () => {
     return {
       pokemons: [] as Pokemon[],
+      pokemon: {} as any,
       show: false,
     };
   },
   computed: {},
   methods: {
-    singleItem(item: string) {
-      PokemonService.getSingleSpecies(item).then((res) => console.log(res));
+    singleItemPush(item: string) {
+      PokemonService.getSingleSpecies(item).then(
+        (res) => (this.pokemon = res.data)
+      );
     },
   },
   created() {

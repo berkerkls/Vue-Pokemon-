@@ -9,13 +9,12 @@ const routes: Array<RouteRecordRaw> = [
         path: "/",
         name: "HomePage",
         component: HomeView,
-        children: [
-            {
-                path: "/1",
-                name: "DetailsPage",
-                component: PokeDetails
-            }
-        ]
+    },
+    {
+        path: "/pokemon-species/:pokename",
+        name: "DetailsPage",
+        component: PokeDetails,
+        props: true
     },
     {
         path: "/units",
