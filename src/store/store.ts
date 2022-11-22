@@ -1,19 +1,10 @@
 import { defineStore } from "pinia"
-import apiAgeofClient from "../services/index"
-import { Civilization } from "../types/types"
+import apiPokemonClient from "../services/PokemonService"
+import { Pokemon } from "../types/types"
 
-export const useAgeofStore = defineStore("empires", {
+export const usePokemonStore = defineStore("pokemon", {
     state: () => ({
-        civilizations: [] as Civilization[],
     }),
-    actions: {
-        async CivilizationsCall() {
-            await apiAgeofClient.getSingleSpecies().then((result: any) => {
-                console.log(result.data)
-            }).catch((err) => {
-                console.log(err)
-            });
-        }
-    }
+    actions: {}
 })
 

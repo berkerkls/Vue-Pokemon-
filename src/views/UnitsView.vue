@@ -1,14 +1,17 @@
 <template>
-  <RouterView></RouterView>
+  <Navbar />
+  <h1>Units</h1>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HomeView from "./views/HomeView.vue";
+import Navbar from "../components/Navbar.vue";
 
 export default defineComponent({
+  name: "Units",
   components: {
-    HomeView,
+    Navbar,
   },
+  data: () => {},
 });
 </script>
