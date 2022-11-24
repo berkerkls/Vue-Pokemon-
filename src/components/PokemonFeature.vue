@@ -43,20 +43,23 @@ export default defineComponent({
     };
   },
   methods: {
-    async apiService() {
-      await PokemonService.getPokemon(this.pokeNum).then((res) =>
-        this.rowData.push(res.data)
-      );
+    apiService(number: any) {
+      PokemonService.getPokemon(number).then((res) => {
+        this.rowData[0] = res.data;
+        console.log(this.rowData);
+      });
     },
   },
   created() {
-    this.apiService();
+    this.apiService(this.pokeNum);
   },
 
   watch: {
     pokeNum(newValue, oldValue) {
       console.log("newValue", newValue);
       console.log("oldValue", oldValue);
+      this.apiService(newValue);
+      // this routesdan url içiindekine göre göndermeyi dene
     },
   },
 });
