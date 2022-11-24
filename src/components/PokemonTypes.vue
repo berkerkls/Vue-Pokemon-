@@ -39,7 +39,6 @@ import Navbar from "./Navbar.vue";
 export default defineComponent({
   name: "PokemonTypes",
   props: ["id"],
-  inject: ["apiFunc"],
   components: {
     Navbar,
   },
@@ -77,7 +76,6 @@ export default defineComponent({
         name: "PokemonFeature",
         params: { pokeNum: number },
       });
-      this.apiFunc;
     },
   },
   provide() {
