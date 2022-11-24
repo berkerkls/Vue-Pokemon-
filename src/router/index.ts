@@ -3,6 +3,8 @@ import HomeView from "../views/HomeView.vue"
 import UnitsView from "../views/UnitsView.vue"
 import CivilView from "../views/CivilView.vue"
 import PokeDetails from "../components/PokeDetails.vue"
+import PokemonTypes from "../components/PokemonTypes.vue"
+import PokemonFeature from "../components/PokemonFeature.vue"
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -17,9 +19,23 @@ const routes: Array<RouteRecordRaw> = [
         props: true
     },
     {
-        path: "/units",
+        path: "/type",
         name: "UnitsPage",
-        component: UnitsView
+        component: UnitsView,
+    },
+    {
+        path: "/type/:id",
+        name: "PokemonTypes",
+        component: PokemonTypes,
+        props: true,
+        children: [
+            {
+                path: "",
+                name: "PokemonFeature",
+                component: PokemonFeature,
+                props: true
+            }
+        ]
     },
     {
         path: "/civilizations",

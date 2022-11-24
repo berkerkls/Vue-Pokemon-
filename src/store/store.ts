@@ -1,10 +1,16 @@
 import { defineStore } from "pinia"
-import apiPokemonClient from "../services/PokemonService"
+import PokemonService from "../services/PokemonService"
 import { Pokemon } from "../types/types"
 
 export const usePokemonStore = defineStore("pokemon", {
     state: () => ({
+        pokemonTypes: [] as Pokemon[]
+
     }),
-    actions: {}
+    getters: {
+        getTypes(state) {
+            return state.pokemonTypes
+        }
+    },
 })
 

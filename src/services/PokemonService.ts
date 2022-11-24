@@ -27,11 +27,7 @@ export default {
         return apiPokemonClient.get("/type/" + id)
     },
 
-    getAbilities() {
-        return apiPokemonClient.get("/ability")
-    },
-
-    getStructure(name: string) {
-        return apiPokemonClient.get("/ability" + name)
+    getPokemon(id: any) {
+        return apiPokemonClient.get("/pokemon/" + id)
     },
 }
