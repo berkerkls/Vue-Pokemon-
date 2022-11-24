@@ -1,5 +1,5 @@
 <template>
-  <v-col v-if="typeof pokeNum === 'number'">
+  <div>
     <ag-grid-vue
       style="width: 800px; height: 500px"
       class="ag-theme-alpine"
@@ -7,7 +7,7 @@
       :rowData="rowData"
     >
     </ag-grid-vue>
-  </v-col>
+  </div>
 </template>
 
 <script lang="ts">
@@ -42,10 +42,22 @@ export default defineComponent({
       rowData: [] as RootObject[],
     };
   },
-  mounted() {
-    PokemonService.getPokemon(this.pokeNum).then((res) =>
-      console.log(this.pokeNum)
-    );
+  methods: {
+    async apiService() {
+      await PokemonService.getPokemon(this.pokeNum).then((res) =>
+        this.rowData.push(res.data)
+      );
+    },
+  },
+  created() {
+    this.apiService();
+  },
+
+  watch: {
+    pokeNum(newValue, oldValue) {
+      console.log("newValue", newValue);
+      console.log("oldValue", oldValue);
+    },
   },
 });
 </script>

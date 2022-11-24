@@ -30,13 +30,14 @@ const routes: Array<RouteRecordRaw> = [
         props: true,
         children: [
             {
-                path: "",
+                path: "pokemon/:pokeNum",
                 name: "PokemonFeature",
                 component: PokemonFeature,
                 props: true
-            }
+            },
         ]
     },
+
     {
         path: "/civilizations",
         name: "CivilizationPage",
