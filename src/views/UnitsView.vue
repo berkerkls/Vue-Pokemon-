@@ -26,10 +26,12 @@
                               @click="
                                 routerPush(item.url.charAt(item.url.length - 2))
                               "
-                              >{{
-                                `See all Pokemons in ${item.name} type`
-                              }}</v-btn
                             >
+                              {{ `See all Pokemons in ${item.name} type` }}
+                            </v-btn>
+                            <v-btn color="red" size="small">
+                              <v-icon color="white" icon="mdi-star"></v-icon>
+                            </v-btn>
                           </v-col>
                         </v-card>
                       </v-row>
@@ -52,6 +54,7 @@ import Navbar from "../components/Navbar.vue";
 import PokemonService from "../services/PokemonService";
 import { Pokemon } from "../types/types";
 import { RootObject } from "../types/types";
+import { usePokemonStore } from "../store/store";
 
 export default defineComponent({
   name: "Units",
@@ -63,13 +66,18 @@ export default defineComponent({
       typeArr: [] as Pokemon[],
     };
   },
+  computed: {
+    ...mapState(usePokemonStore, ["getFavoritesState"]),
+  },
   methods: {
     routerPush(idNum: any) {
       this.$router.push({ name: "PokemonTypes", params: { id: idNum } });
     },
   },
   mounted() {
-    PokemonService.getTypes().then((res) => (this.typeArr = res.data.results));
+    PokemonService.getTypes().then((res) => {
+      this.typeArr = res.data.results;
+    });
   },
 });
 </script>

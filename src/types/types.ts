@@ -75,7 +75,7 @@ export interface Name {
 
 export interface RootObject {
     damage_relations: DamageRelations;
-    game_indices: GameIndice[];
+    game_indices: number;
     generation: Generation2;
     id: number;
     move_damage_class: MoveDamageClass;

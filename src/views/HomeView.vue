@@ -1,6 +1,5 @@
 <template>
   <Navbar fixed="true" style="z-index: 1" />
-
   <v-container fluid>
     <v-col>
       <v-col>

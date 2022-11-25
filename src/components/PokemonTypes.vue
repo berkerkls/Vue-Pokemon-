@@ -10,7 +10,7 @@
         bg-color="orange"
       >
         <v-list-item
-          prepend-icon="mdi-view-dashboard"
+          prepend-icon="mdi-pokeball"
           :title="item.pokemon.name"
           :value="item.pokemon.name"
           color="white"
@@ -30,7 +30,6 @@
 </template>
 
 <script lang="ts">
-import { RouterLink } from "vue-router";
 import { defineComponent } from "vue";
 import PokemonService from "../services/PokemonService";
 import { Pokemon } from "../types/types";
@@ -77,11 +76,6 @@ export default defineComponent({
         params: { pokeNum: number },
       });
     },
-  },
-  provide() {
-    return {
-      pokeNum: this.pokemonNumber,
-    };
   },
 });
 </script>
